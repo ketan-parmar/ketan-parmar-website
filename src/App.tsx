@@ -20,7 +20,9 @@ import {
   Sparkles,
   BookOpen,
   CheckCircle2,
-  ArrowUp
+  ArrowUp,
+  Phone,
+  MapPin
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { PROJECTS, EXPERIENCE, SKILLS, EDUCATION, EXPERTISE, Project } from './data/portfolio';
@@ -152,36 +154,44 @@ export default function App() {
   return (
     <div className="min-h-screen font-sans selection:bg-indigo-100 selection:text-indigo-900 scroll-smooth overflow-x-hidden">
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 transition-all duration-500 ${isMenuOpen ? 'z-[110]' : 'z-50'} ${scrolled ? 'bg-white/95 md:bg-white/80 md:backdrop-blur-2xl border-b border-neutral-200/50 py-3' : 'bg-transparent py-6 md:py-8'}`}>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+      <nav className={`fixed top-0 left-0 right-0 transition-all duration-500 ${isMenuOpen ? 'z-[110]' : 'z-50'} ${scrolled ? 'bg-white/95 lg:bg-white/80 lg:backdrop-blur-2xl border-b border-neutral-200/50 py-3' : 'bg-transparent py-6 lg:py-8'}`}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-2xl font-black tracking-tighter"
+            className="text-2xl font-black tracking-tighter whitespace-nowrap mr-8"
           >
             KETAN <span className="text-neutral-400">PARMAR</span>
           </motion.div>
           
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-4 xl:gap-8">
             {['Impact', 'Projects', 'Expertise', 'Skills', 'Experience'].map((item) => (
               <a 
                 key={item} 
                 href={`#${item.toLowerCase()}`} 
-                className="text-sm font-semibold text-neutral-500 hover:text-black transition-all hover:tracking-widest"
+                className="text-sm font-semibold text-neutral-500 hover:text-black transition-all hover:tracking-widest whitespace-nowrap"
               >
                 {item}
               </a>
             ))}
             <a 
+              href="https://ketan-parmar.github.io/documents/resume.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-sm font-semibold text-neutral-500 hover:text-black transition-all hover:tracking-widest whitespace-nowrap"
+            >
+              Resume
+            </a>
+            <a 
               href="#contact" 
-              className="px-6 py-2.5 bg-black text-white text-sm font-bold rounded-full hover:bg-neutral-800 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-black/5"
+              className="px-5 py-2.5 bg-black text-white text-sm font-bold rounded-full hover:bg-neutral-800 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-black/5 whitespace-nowrap ml-2"
             >
               Get in Touch
             </a>
           </div>
 
           <button 
-            className="md:hidden p-3 bg-neutral-100 rounded-xl active:scale-90 transition-transform relative z-[60]" 
+            className="lg:hidden p-3 bg-neutral-100 rounded-xl active:scale-90 transition-transform relative z-[60]" 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle Menu"
           >
@@ -197,7 +207,7 @@ export default function App() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-[100] bg-white pt-24 pb-12 px-8 md:hidden overflow-y-auto pointer-events-auto"
+            className="fixed inset-0 z-[100] bg-white pt-24 pb-12 px-8 lg:hidden overflow-y-auto pointer-events-auto"
           >
             <div className="flex flex-col gap-6">
               {['Impact', 'Projects', 'Expertise', 'Skills', 'Experience', 'Contact'].map((item) => (
@@ -210,6 +220,15 @@ export default function App() {
                   {item}
                 </a>
               ))}
+              <a 
+                href="https://ketan-parmar.github.io/documents/resume.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-4xl sm:text-5xl font-black tracking-tighter hover:text-indigo-600 transition-colors"
+              >
+                Resume
+              </a>
             </div>
           </motion.div>
         )}
@@ -231,15 +250,19 @@ export default function App() {
               <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] sm:leading-[0.85] mb-6 sm:mb-10 text-balance">
                 Building the future of <span className="text-neutral-400 italic font-serif">mobile</span> experiences.
               </h1>
-              <p className="text-lg sm:text-2xl md:text-3xl text-neutral-500 max-w-4xl mb-10 sm:mb-16 leading-relaxed font-medium">
+              <p className="text-lg sm:text-2xl md:text-3xl text-neutral-500 max-w-4xl mb-6 leading-relaxed font-medium">
                 Senior iOS Engineer with 10+ years of experience building high-performance applications for fintech, banking, and global enterprises.
               </p>
+              <div className="flex items-center gap-2 text-neutral-400 mb-10 sm:mb-16 font-bold uppercase tracking-widest text-xs sm:text-sm">
+                <MapPin className="w-4 h-4 text-indigo-500" />
+                Ahmedabad, Gujarat, India
+              </div>
               
               <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
                 <a href="#projects" className="px-8 py-4 sm:px-10 sm:py-5 bg-black text-white font-bold rounded-2xl sm:rounded-[24px] hover:bg-neutral-800 transition-all flex items-center justify-center gap-3 shadow-2xl shadow-black/10 hover:scale-105 active:scale-95">
                   View Projects <ChevronRight className="w-5 h-5" />
                 </a>
-                <div className="flex items-center justify-center gap-8 px-2">
+                <div className="flex items-center justify-center gap-6 sm:gap-8 px-2">
                   <a href="https://github.com/ketan-parmar" target="_blank" rel="noreferrer" className="text-neutral-400 hover:text-black transition-all hover:scale-110">
                     <Github className="w-7 h-7" />
                   </a>
@@ -248,6 +271,9 @@ export default function App() {
                   </a>
                   <a href="mailto:ketan.engineer14@gmail.com" className="text-neutral-400 hover:text-black transition-all hover:scale-110">
                     <Mail className="w-7 h-7" />
+                  </a>
+                  <a href="tel:+919427742329" className="text-neutral-400 hover:text-black transition-all hover:scale-110">
+                    <Phone className="w-7 h-7" />
                   </a>
                 </div>
               </div>
@@ -546,13 +572,13 @@ export default function App() {
                 <span className="truncate">ketan.engineer14@gmail.com</span>
               </a>
               
-              <div className="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 gap-8 sm:gap-12 border-t border-white/10 pt-16 sm:pt-24">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-12 border-t border-white/10 pt-16 sm:pt-24 mb-16">
                 {[
                   { label: 'LinkedIn', link: 'https://www.linkedin.com/in/ketan-parmar-4b779984/', icon: <Linkedin /> },
                   { label: 'GitHub', link: 'https://github.com/ketan-parmar', icon: <Github /> },
                   { label: 'Stack Overflow', link: 'https://stackoverflow.com/users/6163022/ketan-parmar?tab=profile', icon: <MessageSquare /> },
                   { label: 'Resume', link: 'https://ketan-parmar.github.io/documents/resume.pdf', icon: <Award /> },
-                  { label: 'Portfolio', link: 'https://ketan-parmar.github.io/documents/portfolio.pdf', icon: <BookOpen /> }
+                  { label: 'Phone', link: 'tel:+919427742329', icon: <Phone /> }
                 ].map((social) => (
                   <a 
                     key={social.label} 
@@ -567,6 +593,13 @@ export default function App() {
                     <span className="text-sm font-bold text-neutral-500 group-hover:text-white transition-colors tracking-widest uppercase">{social.label}</span>
                   </a>
                 ))}
+              </div>
+
+              <div className="flex flex-col items-center gap-4 text-neutral-500 mb-20 sm:mb-32">
+                <div className="flex items-center gap-2 font-bold uppercase tracking-[0.3em] text-xs sm:text-sm">
+                  <MapPin className="w-4 h-4 text-indigo-500" />
+                  Ahmedabad, Gujarat, India
+                </div>
               </div>
               
               <div className="mt-40 text-neutral-600 text-sm flex flex-col md:flex-row justify-between items-center gap-8 border-t border-white/5 pt-12">
