@@ -152,9 +152,9 @@ export default function App() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <div className="min-h-screen font-sans selection:bg-indigo-100 selection:text-indigo-900 scroll-smooth">
+    <div className="min-h-screen font-sans selection:bg-indigo-100 selection:text-indigo-900 scroll-smooth overflow-x-hidden">
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-white/80 backdrop-blur-2xl border-b border-neutral-200/50 py-3' : 'bg-transparent py-6 md:py-8'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-white/90 md:bg-white/80 md:backdrop-blur-2xl border-b border-neutral-200/50 py-3' : 'bg-transparent py-6 md:py-8'}`}>
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -278,11 +278,10 @@ export default function App() {
               ].map((stat, i) => (
                 <motion.div 
                   key={stat.label}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: i * 0.1, duration: 0.6 }}
-                  style={{ backfaceVisibility: 'hidden', transform: 'translateZ(0)', willChange: 'transform, opacity' }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ delay: i * 0.05, duration: 0.5 }}
                   className="text-center sm:text-left"
                 >
                   <p className="text-4xl sm:text-5xl lg:text-6xl 2xl:text-8xl font-black mb-2 sm:mb-4 tracking-tighter">{stat.value}</p>
@@ -292,10 +291,10 @@ export default function App() {
             </div>
             
             <motion.div 
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              style={{ backfaceVisibility: 'hidden', transform: 'translateZ(0)', willChange: 'transform, opacity' }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.7 }}
               className="p-8 sm:p-12 md:p-20 bg-white/5 rounded-[40px] sm:rounded-[60px] border border-white/10 flex flex-col lg:flex-row items-center gap-10 sm:gap-16 relative overflow-hidden group"
             >
               <div className="absolute top-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-orange-500/10 blur-[80px] sm:blur-[100px] rounded-full -mr-32 sm:-mr-48 -mt-32 sm:-mt-48 transition-all group-hover:bg-orange-500/20" />
@@ -376,7 +375,7 @@ export default function App() {
                   key={item}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ delay: i * 0.05 }}
                   className="p-8 bg-white/5 border border-white/10 rounded-[32px] hover:bg-white/10 transition-colors group"
                 >
@@ -404,9 +403,9 @@ export default function App() {
               ].map((group, i) => (
                 <motion.div 
                   key={group.title}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ delay: i * 0.1 }}
                   className="p-10 bg-white rounded-[40px] border border-neutral-200 shadow-sm hover:shadow-xl transition-all"
                 >
@@ -439,9 +438,9 @@ export default function App() {
               {EXPERIENCE.map((exp, i) => (
                 <motion.div 
                   key={exp.company + exp.period}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ delay: i * 0.1 }}
                   className="group relative pl-10 md:pl-16 pb-16 border-l-4 border-neutral-100 last:pb-0"
                 >
@@ -500,7 +499,7 @@ export default function App() {
                   key={edu.degree}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ delay: i * 0.1 }}
                   className="p-10 bg-white rounded-[40px] border border-neutral-200 flex gap-8 items-start"
                 >
@@ -523,10 +522,10 @@ export default function App() {
         <section id="contact" className="section-padding bg-neutral-950 text-white rounded-t-[40px] sm:rounded-t-[80px] mx-2">
           <div className="max-w-7xl mx-auto text-center">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.6 }}
             >
               <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 sm:mb-12 leading-[0.9] sm:leading-[0.85]">Let's build something <span className="text-neutral-500 italic font-serif">extraordinary</span>.</h2>
               <p className="text-lg sm:text-2xl md:text-3xl text-neutral-400 max-w-3xl mx-auto mb-12 sm:mb-20 font-medium leading-relaxed">
