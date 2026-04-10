@@ -182,7 +182,11 @@ export default function App() {
             </a>
           </div>
 
-          <button className="md:hidden p-2 bg-neutral-100 rounded-xl" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button 
+            className="md:hidden p-3 bg-neutral-100 rounded-xl active:scale-90 transition-transform relative z-[60]" 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle Menu"
+          >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
@@ -195,7 +199,7 @@ export default function App() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-white/95 backdrop-blur-2xl pt-24 pb-12 px-8 md:hidden overflow-y-auto"
+            className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-2xl pt-24 pb-12 px-8 md:hidden overflow-y-auto pointer-events-auto"
           >
             <div className="flex flex-col gap-6">
               {['Projects', 'Experience', 'Skills', 'Impact', 'Contact'].map((item) => (
@@ -262,7 +266,7 @@ export default function App() {
         </section>
 
         {/* Stats Section */}
-        <section id="impact" className="section-padding bg-neutral-950 text-white rounded-[40px] sm:rounded-[60px] mx-4 md:mx-8">
+        <section id="impact" className="section-padding bg-neutral-950 text-white rounded-[40px] sm:rounded-[60px] mx-4 md:mx-8 isolate">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 gap-8 sm:gap-12 mb-20 sm:mb-32">
               {[
@@ -276,8 +280,9 @@ export default function App() {
                   key={stat.label}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: i * 0.1, duration: 0.6 }}
+                  style={{ backfaceVisibility: 'hidden', transform: 'translateZ(0)', willChange: 'transform, opacity' }}
                   className="text-center sm:text-left"
                 >
                   <p className="text-4xl sm:text-5xl lg:text-6xl 2xl:text-8xl font-black mb-2 sm:mb-4 tracking-tighter">{stat.value}</p>
@@ -289,7 +294,8 @@ export default function App() {
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-50px" }}
+              style={{ backfaceVisibility: 'hidden', transform: 'translateZ(0)', willChange: 'transform, opacity' }}
               className="p-8 sm:p-12 md:p-20 bg-white/5 rounded-[40px] sm:rounded-[60px] border border-white/10 flex flex-col lg:flex-row items-center gap-10 sm:gap-16 relative overflow-hidden group"
             >
               <div className="absolute top-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-orange-500/10 blur-[80px] sm:blur-[100px] rounded-full -mr-32 sm:-mr-48 -mt-32 sm:-mt-48 transition-all group-hover:bg-orange-500/20" />
