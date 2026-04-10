@@ -127,6 +127,19 @@ export default function App() {
       setShowBackToTop(window.scrollY > 500);
     };
     window.addEventListener('scroll', handleScroll);
+
+    // Remove preloader
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+      // Small delay to ensure smooth transition
+      setTimeout(() => {
+        preloader.classList.add('fade-out');
+        setTimeout(() => {
+          preloader.remove();
+        }, 600); // Wait for transition to finish
+      }, 500);
+    }
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
