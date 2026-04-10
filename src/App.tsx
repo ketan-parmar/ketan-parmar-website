@@ -28,18 +28,16 @@ import { PROJECTS, EXPERIENCE, SKILLS, EDUCATION, EXPERTISE, Project } from './d
 const SectionHeader = ({ title, subtitle }: { title: string; subtitle?: string }) => (
   <div className="mb-12">
     <motion.h2 
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
       className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4"
     >
       {title}
     </motion.h2>
     {subtitle && (
       <motion.p 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
         className="text-neutral-500 max-w-2xl text-base sm:text-lg md:text-xl"
       >
@@ -137,7 +135,7 @@ export default function App() {
         setTimeout(() => {
           preloader.remove();
         }, 600); // Wait for transition to finish
-      }, 500);
+      }, 200);
     }
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -154,7 +152,7 @@ export default function App() {
   return (
     <div className="min-h-screen font-sans selection:bg-indigo-100 selection:text-indigo-900 scroll-smooth overflow-x-hidden">
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-white/90 md:bg-white/80 md:backdrop-blur-2xl border-b border-neutral-200/50 py-3' : 'bg-transparent py-6 md:py-8'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 md:bg-white/80 md:backdrop-blur-2xl border-b border-neutral-200/50 py-3' : 'bg-transparent py-6 md:py-8'}`}>
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -199,7 +197,7 @@ export default function App() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-2xl pt-24 pb-12 px-8 md:hidden overflow-y-auto pointer-events-auto"
+            className="fixed inset-0 z-[100] bg-white pt-24 pb-12 px-8 md:hidden overflow-y-auto pointer-events-auto"
           >
             <div className="flex flex-col gap-6">
               {['Projects', 'Experience', 'Skills', 'Impact', 'Contact'].map((item) => (
@@ -256,12 +254,12 @@ export default function App() {
             </motion.div>
           </div>
           
-          {/* Background Decoration */}
-          <div className="absolute top-0 right-0 -z-10 opacity-30 blur-[120px]">
-            <div className="w-[600px] h-[600px] bg-indigo-200 rounded-full mix-blend-multiply animate-pulse" />
+          {/* Background Decoration - Simplified for performance */}
+          <div className="absolute top-0 right-0 -z-10 opacity-10">
+            <div className="w-[600px] h-[600px] bg-indigo-100 rounded-full" />
           </div>
-          <div className="absolute bottom-0 left-0 -z-10 opacity-20 blur-[120px]">
-            <div className="w-[400px] h-[400px] bg-rose-200 rounded-full mix-blend-multiply animate-pulse delay-700" />
+          <div className="absolute bottom-0 left-0 -z-10 opacity-10">
+            <div className="w-[400px] h-[400px] bg-rose-100 rounded-full" />
           </div>
         </section>
 
@@ -278,10 +276,9 @@ export default function App() {
               ].map((stat, i) => (
                 <motion.div 
                   key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  transition={{ delay: i * 0.05, duration: 0.5 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05, duration: 0.4 }}
                   className="text-center sm:text-left"
                 >
                   <p className="text-4xl sm:text-5xl lg:text-6xl 2xl:text-8xl font-black mb-2 sm:mb-4 tracking-tighter">{stat.value}</p>
@@ -291,13 +288,12 @@ export default function App() {
             </div>
             
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.7 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="p-8 sm:p-12 md:p-20 bg-white/5 rounded-[40px] sm:rounded-[60px] border border-white/10 flex flex-col lg:flex-row items-center gap-10 sm:gap-16 relative overflow-hidden group"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-orange-500/10 blur-[80px] sm:blur-[100px] rounded-full -mr-32 sm:-mr-48 -mt-32 sm:-mt-48 transition-all group-hover:bg-orange-500/20" />
+              <div className="absolute top-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-orange-500/5 rounded-full -mr-32 sm:-mr-48 -mt-32 sm:-mt-48 transition-all group-hover:bg-orange-500/10" />
               
               <div className="flex-1 relative z-10 text-center lg:text-left">
                 <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-1.5 bg-orange-500/20 text-orange-500 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] mb-6 sm:mb-8">
@@ -340,17 +336,15 @@ export default function App() {
             </div>
 
             <motion.div 
-              layout
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
             >
               <AnimatePresence mode="popLayout">
                 {filteredProjects.map((project) => (
                   <motion.div
-                    layout
                     key={project.id}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
                     className="h-full"
                   >
                     <ProjectCard project={project} />
@@ -373,9 +367,8 @@ export default function App() {
               {EXPERTISE.map((item, i) => (
                 <motion.div 
                   key={item}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.1 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
                   className="p-8 bg-white/5 border border-white/10 rounded-[32px] hover:bg-white/10 transition-colors group"
                 >
@@ -403,9 +396,8 @@ export default function App() {
               ].map((group, i) => (
                 <motion.div 
                   key={group.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.1 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
                   className="p-10 bg-white rounded-[40px] border border-neutral-200 shadow-sm hover:shadow-xl transition-all"
                 >
@@ -438,9 +430,8 @@ export default function App() {
               {EXPERIENCE.map((exp, i) => (
                 <motion.div 
                   key={exp.company + exp.period}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.1 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
                   className="group relative pl-10 md:pl-16 pb-16 border-l-4 border-neutral-100 last:pb-0"
                 >
@@ -497,9 +488,8 @@ export default function App() {
               {EDUCATION.map((edu, i) => (
                 <motion.div
                   key={edu.degree}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.1 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
                   className="p-10 bg-white rounded-[40px] border border-neutral-200 flex gap-8 items-start"
                 >
@@ -523,9 +513,8 @@ export default function App() {
           <div className="max-w-7xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.6 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
             >
               <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 sm:mb-12 leading-[0.9] sm:leading-[0.85]">Let's build something <span className="text-neutral-500 italic font-serif">extraordinary</span>.</h2>
               <p className="text-lg sm:text-2xl md:text-3xl text-neutral-400 max-w-3xl mx-auto mb-12 sm:mb-20 font-medium leading-relaxed">
