@@ -300,14 +300,28 @@ export default function App() {
                   Community Impact
                 </div>
                 <h3 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6 sm:mb-8 tracking-tight leading-tight">Top 2% Global Contributor on Stack Overflow</h3>
-                <p className="text-neutral-400 text-base sm:text-lg md:text-2xl leading-relaxed font-medium">
+                <p className="text-neutral-400 text-base sm:text-lg md:text-2xl leading-relaxed font-medium mb-8">
                   Helping over 2.1M+ developers worldwide through architectural solutions and technical insights. Ranked among the top contributors globally for iOS and Swift development.
                 </p>
+                <a 
+                  href="https://stackoverflow.com/users/6163022/ketan-parmar?tab=profile" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-orange-500 font-bold hover:text-orange-400 transition-colors group/so"
+                >
+                  View Stack Overflow Profile
+                  <ExternalLink className="w-4 h-4 transition-transform group-hover/so:translate-x-1 group-hover/so:-translate-y-1" />
+                </a>
               </div>
               <div className="flex-shrink-0 relative z-10">
-                <div className="w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-orange-500 rounded-[32px] sm:rounded-[48px] flex items-center justify-center shadow-[0_0_80px_rgba(249,115,22,0.4)] rotate-6 group-hover:rotate-12 transition-transform duration-500">
+                <a 
+                  href="https://stackoverflow.com/users/6163022/ketan-parmar?tab=profile" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-orange-500 rounded-[32px] sm:rounded-[48px] flex items-center justify-center shadow-[0_0_80px_rgba(249,115,22,0.4)] rotate-6 hover:rotate-12 hover:scale-105 transition-all duration-500 group/icon"
+                >
                   <MessageSquare className="w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 text-white" />
-                </div>
+                </a>
               </div>
             </motion.div>
           </div>
