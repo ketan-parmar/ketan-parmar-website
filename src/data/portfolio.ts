@@ -12,6 +12,7 @@ export interface Project {
 
 export interface Experience {
   company: string;
+  companyLink?: string;
   role: string;
   period: string;
   location: string;
@@ -27,7 +28,7 @@ export const PROJECTS: Project[] = [
     features: ['Ticketing', 'Parking access', 'Seat selection', 'In-app payments'],
     tech: ['Swift', 'SwiftUI', 'Bluetooth (IoT)', 'Deep Linking', 'Notifications'],
     impact: '$2B arena scale, real-time fan experience',
-    link: 'https://apps.apple.com/us/app/la-clippers-intuit-dome/id1636181464',
+    link: 'https://apps.apple.com/us/app/la-clippers-intuit-dome/id6476565235',
     category: 'Enterprise'
   },
   {
@@ -38,7 +39,7 @@ export const PROJECTS: Project[] = [
     features: ['Resort booking', 'Itinerary planning', 'Activity discovery', 'Transport booking'],
     tech: ['Swift', 'SwiftUI', 'Apple Pay', 'Deep Linking', 'Notifications'],
     impact: 'Saudi Arabia’s Vision 2030 initiative',
-    link: 'https://apps.apple.com/us/app/visit-red-sea/id1661642232',
+    link: 'https://apps.apple.com/us/app/visit-red-sea/id6714457903',
     category: 'Creative'
   },
   {
@@ -49,7 +50,7 @@ export const PROJECTS: Project[] = [
     features: ['Money transfers', 'Payments', 'Card management', 'Transaction tracking'],
     tech: ['Swift', 'SwiftUI', 'Biometric Auth', 'Notifications'],
     impact: 'Secure and scalable fintech solution for EU',
-    link: 'https://apps.apple.com/es/app/wizink-tu-banco-sencllo/id1156402013',
+    link: 'https://apps.apple.com/pt/app/wizink-o-teu-banco-f%C3%A1cil/id1465978006',
     category: 'Fintech'
   },
   {
@@ -60,7 +61,7 @@ export const PROJECTS: Project[] = [
     features: ['Portfolio tracking', 'Stock bundles (playlists)', 'Social investing', 'Fractional investing'],
     tech: ['Swift', 'SwiftUI', 'UIKit', 'Notifications', 'Plaid'],
     impact: '2M+ downloads | 160K+ funded accounts | #6 Finance App',
-    link: 'https://apps.apple.com/us/app/alinea-invest-stocks-crypto/id1527712356',
+    link: 'https://apps.apple.com/us/app/alinea-personalized-investing/id1554623825',
     category: 'Fintech'
   },
   {
@@ -71,7 +72,7 @@ export const PROJECTS: Project[] = [
     features: ['Photo editing', 'Brush effects', 'Sparkle effects', 'Blend modes'],
     tech: ['Swift', 'Core Image', 'Core Graphics', 'AVFoundation'],
     impact: '#1 on US App Store (Photo & Video)',
-    link: 'https://apps.apple.com/us/app/glitter-collages-art-glitty/id1244583173',
+    link: 'https://apps.apple.com/us/app/glitty-glitter-sparkle-fx/id1435607925',
     category: 'Creative'
   },
   {
@@ -82,7 +83,7 @@ export const PROJECTS: Project[] = [
     features: ['Instant camera', 'Vintage filters', 'Photo lab', 'Media sharing'],
     tech: ['Swift', 'Core Image', 'Core Graphics'],
     impact: 'Featured with Apple Editor’s Note',
-    link: 'https://apps.apple.com/us/app/vintage-film-camera-pixo-cam/id1364243178',
+    link: 'https://apps.apple.com/us/app/pixo-instant-film-camera/id1476054229',
     category: 'Creative'
   },
   {
@@ -93,6 +94,7 @@ export const PROJECTS: Project[] = [
     features: ['Events discovery', 'Promotions', 'AR experiences', 'Media interaction'],
     tech: ['Swift', 'UIKit', 'Unity (iOS Bridging)'],
     impact: 'Delivered interactive AR and multimedia features',
+    link: 'https://apps.apple.com/us/app/winter-garden/id1460554968',
     category: 'Social'
   },
   {
@@ -103,6 +105,7 @@ export const PROJECTS: Project[] = [
     features: ['Events', 'Scavenger hunts', 'AR experiences', 'Photo editing'],
     tech: ['Swift', 'UIKit', 'Unity (iOS Bridging)'],
     impact: 'Engaging interactive experience for community participation',
+    link: 'https://apps.apple.com/us/app/all-things-girl-scouts/id1495932475',
     category: 'Social'
   },
   {
@@ -113,6 +116,7 @@ export const PROJECTS: Project[] = [
     features: ['Inventory management', 'Media uploads', 'Offline storage', 'Real-time sync'],
     tech: ['Swift', 'Core Data', 'File Manager', 'Media Handling'],
     impact: 'Handled thousands of records and media files reliably',
+    link: 'https://www.sweeneykincaid.com/SKLWebDoc/CatalogueApp/',
     category: 'Enterprise'
   },
   {
@@ -123,6 +127,7 @@ export const PROJECTS: Project[] = [
     features: ['Issue reporting', 'Location tagging', 'Media upload', 'Offline support'],
     tech: ['Objective-C', 'SQLite', 'Core Location'],
     impact: 'Improved communication between citizens and authorities',
+    link: 'https://apps.apple.com/in/app/i-witness/id1131204543',
     category: 'Social'
   },
   {
@@ -133,6 +138,7 @@ export const PROJECTS: Project[] = [
     features: ['Booking management', 'Attendance tracking', 'RFID scanning', 'Notifications'],
     tech: ['Swift', 'UIKit', 'Core Location', 'Maps'],
     impact: 'Enabled efficient event operations with real-time tracking',
+    link: 'https://www.checkin.no/',
     category: 'Enterprise'
   },
   {
@@ -176,48 +182,83 @@ export const EXPERTISE = [
 export const EXPERIENCE: Experience[] = [
   {
     company: 'Globant',
+    companyLink: 'https://www.globant.com/',
     role: 'Senior Software Engineer – iOS',
     period: 'Apr 2022 – Present',
     location: 'Remote (Pune/Ahmedabad, India)',
     highlights: [
-      'Developed and maintained enterprise-scale iOS applications for global clients.',
-      'Contributed to LA Clipper + Intuite Dome, Visit Red Sea, and Wizink Bank.',
-      'Worked on large-scale projects with 100–500 member teams.',
-      'Led end-to-end feature delivery from requirement analysis to production releases.'
+      'Developed and maintained enterprise-scale iOS applications for global clients',
+      'Contributed to applications including LA Clipper + Intuite Dome, Visit Red Sea, and Wizink Bank',
+      'Worked on large-scale projects with 100–500 member teams, collaborating within focused sub-teams of 20–25 engineers and contributing from project inception to delivery.',
+      'Led end-to-end feature delivery from requirement analysis to production releases',
+      'Collaborated with cross‑functional teams including backend engineers, designers, and product managers',
+      'Performed architecture discussions and code reviews to maintain code quality and scalability'
     ]
   },
   {
     company: 'Alinea Invest',
+    companyLink: 'https://www.alinea-invest.com/',
     role: 'Software Engineer – iOS (Remote)',
     period: 'Jan 2021 – Nov 2021',
     location: 'New York, USA',
     highlights: [
-      'Developed Alinea, a YC-backed fintech mobile application with 2M+ downloads.',
-      'Implemented investment workflows, onboarding systems, and user experience improvements.',
-      'Worked closely with early engineering team to scale mobile product features.',
-      'Collaborated with distributed engineering team across multiple time zones.'
+      'Developed Alinea, a YC-backed fintech mobile application with 2M+ downloads and 160K+ funded accounts',
+      'I was part of the team from the very beginning, starting development with a small team of 8–10 members',
+      'Worked closely with early engineering team to scale mobile product features',
+      'Implemented investment workflows, onboarding systems, and user experience improvements',
+      'Collaborated with distributed engineering team across multiple time zones',
+      'Closely worked with founders'
     ]
   },
   {
     company: 'Webloom Solutions',
+    companyLink: 'https://www.webloominc.com/',
     role: 'Member of Technical Staff – iOS (Remote)',
     period: 'Aug 2020 – Jan 2021',
     location: 'Bengaluru, India',
     highlights: [
-      'Designed and developed a short-video and social media sharing application.',
-      'Implemented core features for media upload & editing, feed display, and user interaction.',
-      'Managed feature development lifecycle from planning to deployment.'
+      'Designed and developed a short-video and social media sharing application',
+      'Implemented core features for media upload & editing, feed display, and user interaction',
+      'Managed feature development lifecycle from planning to deployment',
+      'Worked with team size of 10 to 15 people and directly worked with the founder'
     ]
   },
   {
     company: 'Credencys Solutions',
+    companyLink: 'https://www.credencys.com/',
     role: 'Software Developer – iOS',
     period: 'Apr 2019 – Jun 2020',
     location: 'Ahmedabad, India',
     highlights: [
-      'Served as Tech Lead across multiple client projects.',
-      'Implemented iOS‑Unity bridging and Unity based AI models.',
-      'Managed sprint planning, architecture decisions, and delivery timelines.'
+      'Served as Tech Lead across multiple client projects',
+      'Implemented iOS‑Unity bridging and Unity based AI models in iOS mobile applications (Winter Garden & All Things Girl Scouts)',
+      'Managed sprint planning, architecture decisions, and delivery timelines',
+      'Received multiple client recognitions for high‑quality delivery'
+    ]
+  },
+  {
+    company: 'CMARIX TechnoLabs',
+    companyLink: 'https://www.cmarix.com/',
+    role: 'Sr. iOS Developer',
+    period: 'Mar 2017 – Mar 2019',
+    location: 'Ahmedabad, India',
+    highlights: [
+      'Developed an application that ranked #1 on the US App Store (Photo & Video category) - Glitter Collages & Art: Glitty',
+      'Built an application featured with Apple Editor’s Note award - Vintage Film Camera: Pixo Cam',
+      'Implemented advanced features including photo editing(core graphics, core image etc), in‑app purchases, map integrations, core data, and media processing',
+      'Maintained applications with large active user bases'
+    ]
+  },
+  {
+    company: 'SilverSky Technology',
+    companyLink: 'https://silverskytechnology.com/',
+    role: 'Jr. iOS Developer',
+    period: 'Jul 2015 – Feb 2017',
+    location: 'Ahmedabad, India',
+    highlights: [
+      'Developed small iOS applications and also developed modules across multiple different iOS applications',
+      'Implemented two-way syncing, payment gateways, maps, audio & video editing',
+      'Gained strong experience in Swift, Objective‑C, UIKit, Auto Layout, and SDK integrations'
     ]
   }
 ];

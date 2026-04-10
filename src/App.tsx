@@ -50,6 +50,13 @@ const SectionHeader = ({ title, subtitle }: { title: string; subtitle?: string }
 );
 
 const ProjectCard = ({ project }: { project: Project }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const descriptionLimit = 120;
+  const isLongDescription = project.description.length > descriptionLimit;
+  const displayDescription = isExpanded || !isLongDescription 
+    ? project.description 
+    : `${project.description.substring(0, descriptionLimit)}...`;
+
   return (
     <motion.div
       whileHover={{ y: -8 }}
@@ -77,7 +84,19 @@ const ProjectCard = ({ project }: { project: Project }) => {
         </div>
         
         <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
-        <p className="text-neutral-500 text-sm md:text-base mb-6 leading-relaxed line-clamp-4">{project.description}</p>
+        <div className="mb-6">
+          <p className="text-neutral-500 text-sm md:text-base leading-relaxed">
+            {displayDescription}
+          </p>
+          {isLongDescription && (
+            <button 
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="text-indigo-600 text-xs font-bold mt-2 hover:underline focus:outline-none"
+            >
+              {isExpanded ? 'Read Less' : 'Read More'}
+            </button>
+          )}
+        </div>
         
         <div className="flex flex-wrap gap-2 mb-8">
           {project.tech.map(t => (
@@ -192,7 +211,7 @@ export default function App() {
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 bg-indigo-50 text-indigo-600 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] mb-6 sm:mb-10 shadow-sm border border-indigo-100/50">
                 <Smartphone className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
-                Senior iOS Engineer
+                Senior Mobile Architect
               </div>
               <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] sm:leading-[0.85] mb-6 sm:mb-10 text-balance">
                 Building the future of <span className="text-neutral-400 italic font-serif">mobile</span> experiences.
@@ -209,7 +228,7 @@ export default function App() {
                   <a href="https://github.com/ketan-parmar" target="_blank" rel="noreferrer" className="text-neutral-400 hover:text-black transition-all hover:scale-110">
                     <Github className="w-7 h-7" />
                   </a>
-                  <a href="https://linkedin.com/in/ketan-parmar" target="_blank" rel="noreferrer" className="text-neutral-400 hover:text-black transition-all hover:scale-110">
+                  <a href="https://www.linkedin.com/in/ketan-parmar-4b779984/" target="_blank" rel="noreferrer" className="text-neutral-400 hover:text-black transition-all hover:scale-110">
                     <Linkedin className="w-7 h-7" />
                   </a>
                   <a href="mailto:ketan.engineer14@gmail.com" className="text-neutral-400 hover:text-black transition-all hover:scale-110">
@@ -232,12 +251,13 @@ export default function App() {
         {/* Stats Section */}
         <section id="impact" className="section-padding bg-neutral-950 text-white rounded-[40px] sm:rounded-[60px] mx-4 md:mx-8">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 sm:gap-16 md:gap-24 mb-20 sm:mb-32">
+            <div className="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 gap-8 sm:gap-12 mb-20 sm:mb-32">
               {[
                 { label: 'Years Experience', value: '10+' },
                 { label: 'App Store Rank', value: '#1' },
                 { label: 'Fintech Downloads', value: '2M+' },
-                { label: 'SO Reputation', value: '27K+' }
+                { label: 'Stack Overflow Reputation', value: '27K+' },
+                { label: 'Apple Editor’s Note', value: 'Award' }
               ].map((stat, i) => (
                 <motion.div 
                   key={stat.label}
@@ -247,7 +267,7 @@ export default function App() {
                   transition={{ delay: i * 0.1, duration: 0.6 }}
                   className="text-center sm:text-left"
                 >
-                  <p className="text-5xl sm:text-6xl md:text-8xl font-black mb-2 sm:mb-4 tracking-tighter">{stat.value}</p>
+                  <p className="text-4xl sm:text-5xl lg:text-6xl 2xl:text-8xl font-black mb-2 sm:mb-4 tracking-tighter">{stat.value}</p>
                   <p className="text-neutral-500 text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-[0.3em]">{stat.label}</p>
                 </motion.div>
               ))}
@@ -411,7 +431,19 @@ export default function App() {
                   <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8">
                     <div>
                       <h4 className="text-3xl font-black tracking-tight mb-2">{exp.role}</h4>
-                      <p className="text-xl font-bold text-indigo-600">{exp.company}</p>
+                      {exp.companyLink ? (
+                        <a 
+                          href={exp.companyLink} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-xl font-bold text-indigo-600 hover:text-indigo-800 transition-colors inline-flex items-center gap-2 group/link"
+                        >
+                          {exp.company}
+                          <ExternalLink className="w-4 h-4 opacity-0 group-hover/link:opacity-100 transition-opacity" />
+                        </a>
+                      ) : (
+                        <p className="text-xl font-bold text-indigo-600">{exp.company}</p>
+                      )}
                     </div>
                     <div className="md:text-right">
                       <p className="text-sm font-black text-neutral-400 uppercase tracking-[0.2em] mb-1">{exp.period}</p>
@@ -484,17 +516,19 @@ export default function App() {
               
               <a 
                 href="mailto:ketan.engineer14@gmail.com" 
-                className="inline-flex items-center gap-4 sm:gap-6 px-8 py-5 sm:px-16 sm:py-8 bg-white text-black text-lg sm:text-2xl md:text-3xl font-black rounded-2xl sm:rounded-[40px] hover:bg-neutral-200 transition-all mb-20 sm:mb-32 hover:scale-105 active:scale-95 shadow-[0_0_100px_rgba(255,255,255,0.1)]"
+                className="inline-flex items-center gap-3 sm:gap-6 px-5 py-4 sm:px-16 sm:py-8 bg-white text-black text-sm sm:text-2xl md:text-3xl font-black rounded-2xl sm:rounded-[40px] hover:bg-neutral-200 transition-all mb-20 sm:mb-32 hover:scale-105 active:scale-95 shadow-[0_0_100px_rgba(255,255,255,0.1)] max-w-full overflow-hidden"
               >
-                <Mail className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" /> ketan.engineer14@gmail.com
+                <Mail className="w-4 h-4 sm:w-8 sm:h-8 md:w-10 md:h-10 flex-shrink-0" /> 
+                <span className="truncate">ketan.engineer14@gmail.com</span>
               </a>
               
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 border-t border-white/10 pt-16 sm:pt-24">
+              <div className="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 gap-8 sm:gap-12 border-t border-white/10 pt-16 sm:pt-24">
                 {[
-                  { label: 'LinkedIn', link: 'https://linkedin.com/in/ketan-parmar', icon: <Linkedin /> },
+                  { label: 'LinkedIn', link: 'https://www.linkedin.com/in/ketan-parmar-4b779984/', icon: <Linkedin /> },
                   { label: 'GitHub', link: 'https://github.com/ketan-parmar', icon: <Github /> },
-                  { label: 'Stack Overflow', link: 'https://stackoverflow.com/users/42329/ketan-parmar', icon: <MessageSquare /> },
-                  { label: 'Resume', link: '#', icon: <Award /> }
+                  { label: 'Stack Overflow', link: 'https://stackoverflow.com/users/6163022/ketan-parmar?tab=profile', icon: <MessageSquare /> },
+                  { label: 'Resume', link: 'https://ketan-parmar.github.io/documents/resume.pdf', icon: <Award /> },
+                  { label: 'Portfolio', link: 'https://ketan-parmar.github.io/documents/portfolio.pdf', icon: <BookOpen /> }
                 ].map((social) => (
                   <a 
                     key={social.label} 
