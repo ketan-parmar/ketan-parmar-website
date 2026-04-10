@@ -192,7 +192,7 @@ export default function App() {
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 bg-indigo-50 text-indigo-600 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] mb-6 sm:mb-10 shadow-sm border border-indigo-100/50">
                 <Smartphone className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
-                Senior Mobile Architect
+                Senior iOS Engineer
               </div>
               <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] sm:leading-[0.85] mb-6 sm:mb-10 text-balance">
                 Building the future of <span className="text-neutral-400 italic font-serif">mobile</span> experiences.
