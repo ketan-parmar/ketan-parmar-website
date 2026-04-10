@@ -267,7 +267,9 @@ export const SKILLS = {
   languages: ['Swift', 'Objective-C', 'Dart (Flutter)', 'JavaScript', 'TypeScript'],
   frameworks: ['SwiftUI', 'UIKit', 'Combine', 'WatchKit', 'Flutter', 'React'],
   architecture: ['MVC', 'MVVM', 'MVVM-C', 'Clean Architecture'],
-  databases: ['Core Data', 'SQLite', 'Firebase'],
-  tools: ['Xcode', 'VS Code', 'Android Studio', 'Git', 'GitLab', 'CI/CD'],
-  ai: ['GitHub Copilot', 'ChatGPT', 'Claude', 'Google Gemini', 'CoreML', 'Vision']
+  platforms: ['iOS', 'watchOS', 'tvOS', 'macOS', 'Android'],
+  ides: ['Xcode', 'VS Code', 'Android Studio'],
+  tools: ['Git', 'GitLab', 'CI/CD', 'Fastlane', 'CocoaPods', 'Swift Package Manager'],
+  ai: ['GitHub Copilot', 'ChatGPT', 'Claude', 'Google Gemini', 'CoreML', 'Vision'],
+  databases: ['Core Data', 'SQLite', 'Firebase', 'Realm']
 };

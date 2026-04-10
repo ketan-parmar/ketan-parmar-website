@@ -152,18 +152,18 @@ export default function App() {
   return (
     <div className="min-h-screen font-sans selection:bg-indigo-100 selection:text-indigo-900 scroll-smooth overflow-x-hidden">
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 md:bg-white/80 md:backdrop-blur-2xl border-b border-neutral-200/50 py-3' : 'bg-transparent py-6 md:py-8'}`}>
+      <nav className={`fixed top-0 left-0 right-0 transition-all duration-500 ${isMenuOpen ? 'z-[110]' : 'z-50'} ${scrolled ? 'bg-white/95 md:bg-white/80 md:backdrop-blur-2xl border-b border-neutral-200/50 py-3' : 'bg-transparent py-6 md:py-8'}`}>
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="text-2xl font-black tracking-tighter"
           >
-            KETAN<span className="text-neutral-400">PARMAR</span>
+            KETAN <span className="text-neutral-400">PARMAR</span>
           </motion.div>
           
           <div className="hidden md:flex items-center gap-10">
-            {['Projects', 'Experience', 'Skills', 'Impact'].map((item) => (
+            {['Impact', 'Projects', 'Expertise', 'Skills', 'Experience'].map((item) => (
               <a 
                 key={item} 
                 href={`#${item.toLowerCase()}`} 
@@ -200,7 +200,7 @@ export default function App() {
             className="fixed inset-0 z-[100] bg-white pt-24 pb-12 px-8 md:hidden overflow-y-auto pointer-events-auto"
           >
             <div className="flex flex-col gap-6">
-              {['Projects', 'Experience', 'Skills', 'Impact', 'Contact'].map((item) => (
+              {['Impact', 'Projects', 'Expertise', 'Skills', 'Experience', 'Contact'].map((item) => (
                 <a 
                   key={item} 
                   href={`#${item.toLowerCase()}`} 
@@ -335,9 +335,7 @@ export default function App() {
               </div>
             </div>
 
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-            >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               <AnimatePresence mode="popLayout">
                 {filteredProjects.map((project) => (
                   <motion.div
@@ -351,12 +349,12 @@ export default function App() {
                   </motion.div>
                 ))}
               </AnimatePresence>
-            </motion.div>
+            </div>
           </div>
         </section>
 
         {/* Expertise Section */}
-        <section className="section-padding bg-neutral-950 text-white">
+        <section id="expertise" className="section-padding bg-neutral-950 text-white">
           <div className="max-w-7xl mx-auto">
             <SectionHeader 
               title="Core Expertise" 
@@ -388,26 +386,31 @@ export default function App() {
               subtitle="Specialized in building scalable, high-performance mobile architectures using modern technologies."
             />
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 { title: 'Languages', icon: <Code2 />, items: SKILLS.languages },
-                { title: 'Frameworks', icon: <Globe />, items: SKILLS.frameworks },
-                { title: 'AI & Tools', icon: <Cpu />, items: [...SKILLS.ai, ...SKILLS.tools.slice(0, 3)] }
+                { title: 'Frameworks', icon: <Layers />, items: SKILLS.frameworks },
+                { title: 'Architecture', icon: <BookOpen />, items: SKILLS.architecture },
+                { title: 'Platforms', icon: <Smartphone />, items: SKILLS.platforms },
+                { title: 'IDEs', icon: <Terminal />, items: SKILLS.ides },
+                { title: 'Tools', icon: <Cpu />, items: SKILLS.tools },
+                { title: 'AI', icon: <Sparkles />, items: SKILLS.ai },
+                { title: 'Databases', icon: <Database />, items: SKILLS.databases }
               ].map((group, i) => (
                 <motion.div 
                   key={group.title}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="p-10 bg-white rounded-[40px] border border-neutral-200 shadow-sm hover:shadow-xl transition-all"
+                  transition={{ delay: i * 0.05 }}
+                  className="p-8 bg-white rounded-[32px] border border-neutral-200 shadow-sm hover:shadow-xl transition-all"
                 >
-                  <div className="w-16 h-16 bg-neutral-100 rounded-3xl flex items-center justify-center mb-8 text-black">
+                  <div className="w-12 h-12 bg-neutral-100 rounded-2xl flex items-center justify-center mb-6 text-black">
                     {group.icon}
                   </div>
-                  <h4 className="text-2xl font-black mb-8 tracking-tight">{group.title}</h4>
-                  <div className="flex flex-wrap gap-3">
+                  <h4 className="text-xl font-black mb-6 tracking-tight">{group.title}</h4>
+                  <div className="flex flex-wrap gap-2">
                     {group.items.map(item => (
-                      <span key={item} className="px-5 py-2.5 bg-neutral-50 border border-neutral-100 rounded-2xl text-sm font-bold text-neutral-600">
+                      <span key={item} className="px-3 py-1.5 bg-neutral-50 border border-neutral-100 rounded-xl text-xs font-bold text-neutral-600">
                         {item}
                       </span>
                     ))}
