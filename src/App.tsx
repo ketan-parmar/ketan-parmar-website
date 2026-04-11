@@ -362,12 +362,12 @@ export default function App() {
                 subtitle="A selection of high-impact mobile applications I've architected and delivered for global clients."
               />
               
-              <div className="flex flex-wrap gap-2 sm:gap-3">
+              <div className="flex flex-wrap gap-3">
                 {categories.map(cat => (
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`px-4 sm:px-8 py-2 sm:py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all ${activeCategory === cat ? 'bg-black text-white shadow-xl shadow-black/10 scale-105' : 'bg-neutral-100 text-neutral-500 hover:bg-neutral-200'}`}
+                    className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all ${activeCategory === cat ? 'bg-black text-white shadow-xl shadow-black/10 scale-105' : 'bg-neutral-100 text-neutral-500 hover:bg-neutral-200'}`}
                   >
                     {cat}
                   </button>
