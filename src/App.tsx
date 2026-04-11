@@ -356,18 +356,18 @@ export default function App() {
         {/* Projects Section */}
         <section id="projects" className="section-padding">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 mb-20">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 sm:gap-12 mb-12 sm:mb-20">
               <SectionHeader 
                 title="Featured Work" 
                 subtitle="A selection of high-impact mobile applications I've architected and delivered for global clients."
               />
               
-              <div className="flex flex-wrap gap-3 mb-4">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {categories.map(cat => (
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`px-8 py-3 rounded-2xl text-sm font-bold transition-all ${activeCategory === cat ? 'bg-black text-white shadow-xl shadow-black/10 scale-105' : 'bg-neutral-100 text-neutral-500 hover:bg-neutral-200'}`}
+                    className={`px-4 sm:px-8 py-2 sm:py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all ${activeCategory === cat ? 'bg-black text-white shadow-xl shadow-black/10 scale-105' : 'bg-neutral-100 text-neutral-500 hover:bg-neutral-200'}`}
                   >
                     {cat}
                   </button>
@@ -408,10 +408,10 @@ export default function App() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="p-8 bg-white/5 border border-white/10 rounded-[32px] hover:bg-white/10 transition-colors group"
+                  className="p-6 bg-white/5 border border-white/10 rounded-[24px] hover:bg-white/10 transition-colors group flex items-center gap-4"
                 >
-                  <CheckCircle2 className="w-8 h-8 text-indigo-500 mb-6 group-hover:scale-110 transition-transform" />
-                  <p className="text-xl font-bold leading-snug">{item}</p>
+                  <CheckCircle2 className="w-6 h-6 text-indigo-500 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                  <p className="text-lg font-bold leading-tight">{item}</p>
                 </motion.div>
               ))}
             </div>
@@ -444,10 +444,12 @@ export default function App() {
                   transition={{ delay: i * 0.05 }}
                   className="p-8 bg-white rounded-[32px] border border-neutral-200 shadow-sm hover:shadow-xl transition-all"
                 >
-                  <div className="w-12 h-12 bg-neutral-100 rounded-2xl flex items-center justify-center mb-6 text-black">
-                    {group.icon}
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-10 h-10 bg-neutral-100 rounded-xl flex items-center justify-center text-black flex-shrink-0">
+                      {group.icon}
+                    </div>
+                    <h4 className="text-xl font-black tracking-tight">{group.title}</h4>
                   </div>
-                  <h4 className="text-xl font-black mb-6 tracking-tight">{group.title}</h4>
                   <div className="flex flex-wrap gap-2">
                     {group.items.map(item => (
                       <span key={item} className="px-3 py-1.5 bg-neutral-50 border border-neutral-100 rounded-xl text-xs font-bold text-neutral-600">
